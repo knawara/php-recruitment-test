@@ -1,6 +1,8 @@
 <?php
 
-class Old_Legacy_CacheWarmer_Resolver_Static implements Old_Legacy_CacheWarmer_Resolver_Interface
+namespace lib\Old\Legacy\CacheWarmer\Resolver;
+
+class StaticHostname implements ResolverInterface
 {
     private $ip;
 
