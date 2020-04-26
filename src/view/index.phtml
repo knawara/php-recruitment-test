@@ -30,7 +30,17 @@
     <div>
         <h1>Cache Warmer</h1>
         <?php if ($this->user): ?>
-            <p class="bg-success">Hello <?= $this->user->getDisplayName() ?>!</p>
+            <?php $userStats = $this->getUserStats();?>
+            <div class="bg-success">
+                <p>Hello <span><?= $this->user->getDisplayName() ?>!</span></p>
+                <p>Total number of pages associated: <?= $userStats['pages_total'] ?></p>
+                <?php if ($leastRecentlyVisitedPage = $userStats['least_recently_visited_page'] ):?>
+                    <p>Least recently visited page: <?= $leastRecentlyVisitedPage->getHostName() . '/' . $leastRecentlyVisitedPage->getUrl() ?></p>
+                <?php endif;?>
+                <?php if ($mostRecentlyVisitedPage = $userStats['most_recently_visited_page'] ):?>
+                    <p>Most recently visited page: <?= $mostRecentlyVisitedPage->getHostName() . '/' . $mostRecentlyVisitedPage->getUrl() ?></p>
+                <?php endif;?>
+            </div>
 
             <div class="padded">
                 <form class="form-inline" method="post" action="/website">
