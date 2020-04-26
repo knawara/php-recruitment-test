@@ -9,6 +9,7 @@ class Page
     public $url;
     public $website_id;
     public $last_page_visit;
+    public $hostname;
     
     public function __construct()
     {
@@ -47,6 +48,11 @@ class Page
     public function getLastPageVisit()
     {
         return $this->last_page_visit;
+    }
+
+    public function getHostName()
+    {
+        return $this->hostname;
     }
 
 }
